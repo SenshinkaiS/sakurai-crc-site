@@ -1,0 +1,26 @@
+name: Migrate legacy data to microCMS (one-time)
+
+# 手動実行専用: GitHubの Actions タブ → このワークフロー → Run workflow
+# 既存のお知らせ・ブログ記事を microCMS に一括投入する。
+# 実行前に Settings → Secrets and variables → Actions に
+# MICROCMS_SERVICE_DOMAIN と MICROCMS_API_KEY (POST権限有効) を登録しておくこと。
+# ※ 二重実行すると記事が重複するので、原則1回だけ実行する。
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Run migration
+        run: npm run migrate
+        env:
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
