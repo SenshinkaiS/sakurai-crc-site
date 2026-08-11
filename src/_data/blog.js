@@ -38,7 +38,15 @@ async function fromMicroCMS(domain, key) {
   const res = await fetch(url, { headers: { "X-MICROCMS-API-KEY": key } });
   if (!res.ok) throw new Error(`microCMS blog API error: ${res.status}`);
   const json = await res.json();
-  return json.contents.map((item) => ({
+  return json.contents
+    .filter((item) => {
+      if (!item.date || !item.title || !item.slug) {
+        console.warn(`[data] blog: 日付・タイトル・スラッグのいずれかが未入力のためスキップ (id: ${item.id})`);
+        return false;
+      }
+      return true;
+    })
+    .map((item) => ({
     id: item.legacyId ?? null,
     slug: item.slug,
     title: item.title,

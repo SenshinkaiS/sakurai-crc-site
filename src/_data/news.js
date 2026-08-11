@@ -12,11 +12,19 @@ async function fromMicroCMS(domain, key) {
   const res = await fetch(url, { headers: { "X-MICROCMS-API-KEY": key } });
   if (!res.ok) throw new Error(`microCMS news API error: ${res.status}`);
   const json = await res.json();
-  return json.contents.map((item) => ({
-    dateISO: item.date.slice(0, 10),
-    title: item.title,
-    bodyHtml: item.body || "",
-  }));
+  return json.contents
+    .filter((item) => {
+      if (!item.date || !item.title) {
+        console.warn(`[data] news: 日付またはタイトルが未入力のためスキップ (id: ${item.id})`);
+        return false;
+      }
+      return true;
+    })
+    .map((item) => ({
+      dateISO: item.date.slice(0, 10),
+      title: item.title,
+      bodyHtml: item.body || "",
+    }));
 }
 
 function fromLegacy() {
