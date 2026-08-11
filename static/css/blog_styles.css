@@ -1,0 +1,718 @@
+:root {
+  /* === ヘッダー高さの変数 === */
+  --header-height-pc: 140px;  /* 180pxから140pxに縮小 */
+  --header-height-sp: 120px; /* 150pxから120pxに縮小 */
+
+  /* === 配色定義 === */
+  --base-gray: #6c757d;      /* 基本となる中間グレー (Bootstrap Secondaryに近い) */
+  --dark-gray: #343a40;      /* 濃いグレー (テキスト、フッター背景など) */
+  --light-gray: #f8f9fa;     /* 薄いグレー (背景色) */
+  --border-gray: #dee2e6;    /* 境界線用のグレー */
+  --text-muted: #666;        /* 薄いテキスト色 */
+  --text-light: #999;        /* より薄いテキスト色 */
+
+  --sakura-pink: #DAA2CC;    /* 桜ピンク (アクセントカラー) */
+  --light-sakura-pink: #fff0f5; /* 淡い桜ピンク (背景アクセント用) */
+
+  --white: #ffffff;          /* 白 */
+  --black: #000000;          /* 黒 (強い強調用) */
+
+  /* === 用途別割り当て === */
+  --primary-color: var(--base-gray);        /* プライマリ = 基本グレー */
+  --secondary-color: var(--sakura-pink);    /* セカンダリ = 桜ピンク (アクセント) */
+  --text-color: var(--dark-gray);           /* 基本テキスト = 濃いグレー */
+  --light-text-color: var(--white);         /* 明るいテキスト = 白 */
+  --background-color: var(--light-gray);    /* 基本背景 = 薄いグレー */
+  --content-bg-color: var(--white);         /* コンテンツ背景 = 白 */
+  --border-color: var(--border-gray);       /* 境界線 = グレー */
+  --header-bg: var(--light-gray);           /* ヘッダー背景 = 薄いグレー */
+  --footer-bg: var(--dark-gray);            /* フッター背景 = 濃いグレー */
+  --footer-text-color: #adb5bd;             /* フッターテキスト = 薄いグレー */
+
+  /* === パディング定義 === */
+  --section-padding-pc: 60px 20px;
+  --section-padding-sp: 40px 15px;
+  --container-padding: 15px;
+  --card-padding: 15px;
+
+  /* === コンテナ設定 === */
+  --container-max-width: 1200px;  /* コンテナの最大幅 */
+  --container-padding-pc: 40px;   /* PC表示時の左右パディング */
+  --container-padding-sp: 20px;   /* スマホ表示時の左右パディング */
+
+  /* === フォントサイズ定義 === */
+  --font-size-large: 1.4em;
+  --font-size-medium: 1.2em;
+  --font-size-small: 0.9em;
+  --font-size-xs: 0.85em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle; /* 画像下の余白対策 */
+}
+
+html {
+  scroll-behavior: smooth;
+  /* ブログページのスクロール位置調整は不要かも（ヘッダーがstickyなため） */
+  /* scroll-padding-top: calc(var(--header-height-pc) + 60px); */
+}
+
+body {
+  font-family: 'Noto Sans JP', Arial, Meiryo, sans-serif; /* 基本フォント */
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-color);
+  background-color: var(--background-color); /* 全体の背景は薄いグレー */
+  /* ブログページのbodyにpadding-topは不要 */
+}
+
+a {
+  color: var(--secondary-color); /* 基本リンク色は桜ピンク */
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+a:hover {
+  opacity: 0.7;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.8em;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--dark-gray);
+}
+
+h2 {
+  font-size: 1.8em;
+  text-align: center;
+  margin-bottom: 1.5em;
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  /* html { scroll-padding-top: calc(var(--header-height-sp) + 50px); } */
+}
+
+
+/* === 基本スタイル === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* コンテナの基本スタイル */
+.container {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-pc);
+  padding-right: var(--container-padding-pc);
+}
+
+/* スマートフォン対応 (レスポンシブ) */
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--container-padding-sp);
+    padding-right: var(--container-padding-sp);
+  }
+}
+
+/* === ヘッダーコンテナ === */
+/* ブログヘッダー全体 */
+.blog-header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* padding: 0.8rem 0; */ /* 上下パディング削除 */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 65px; /* ★ 固定の高さを指定 (例: 65px) */
+    display: flex; /* ★ flexにして中の要素を中央揃え */
+    align-items: center; /* ★ 垂直中央揃え */
+}
+
+/* ブログヘッダー内のコンテナ (PC/デフォルト表示) */
+.blog-header .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; /* 左右パディングのみ */
+    display: flex;
+    justify-content: space-between; /* 要素を両端に配置 */
+    align-items: center; /* 垂直中央揃え */
+    width: 100%; /* ★ 幅100%を追加 */
+}
+
+
+/* Basic Blog Styles */
+
+/* --- ロゴのデフォルトスタイル (PC用) --- */
+.blog-logo-pc {
+    display: block; /* PCではこちらを表示 */
+    /* height: 50px; */ /* 固定高さにしたのでmax-heightで制御 */
+    max-height: calc(65px - 15px); /* ★ ヘッダー高さより少し小さく */
+    width: auto;
+    vertical-align: middle; /* 画像下の余白対策 */
+}
+.blog-logo-sp {
+    display: none; /* スマホ用はデフォルトで非表示 */
+    vertical-align: middle; /* 画像下の余白対策 */
+}
+/* --- ロゴのデフォルトスタイル ここまで --- */
+
+/* ブログタイトル（ロゴとテキストのコンテナ） */
+.blog-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* PC表示でのロゴとテキストの隙間 */
+}
+.blog-title-text {
+    display: flex;
+    flex-direction: column;
+}
+.blog-title-text h1 {
+    font-size: 1.5rem; /* PCタイトルサイズ */
+    margin: 0;
+    color: #4a6da7; /* Blog primary color */
+    font-weight: 700;
+    line-height: 1.3;
+}
+.blog-title-text .subtitle {
+    font-size: 0.85rem; /* PCサブタイトルサイズ */
+    color: #666; /* Blog dark gray */
+    line-height: 1.2;
+}
+
+/* Blog Main Content Area */
+.blog-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+}
+
+/* Blog Post List */
+.blog-main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.blog-post {
+    background-color: #fff; /* Blog card background */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Blog Footer */
+.blog-footer {
+    background-color: #4a6da7; /* Blog primary color */
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Blog Responsive */
+/* === ブログヘッダーコンテナ (スマホ表示調整) === */
+@media screen and (max-width: 768px) {
+    .blog-header .header-container {
+        flex-direction: row; /* 横並びを維持 */
+        justify-content: space-between; /* 両端揃え */
+        align-items: center; /* 垂直中央揃え */
+        gap: 10px; /* 要素間の隙間を調整 */
+        padding: 0 1rem; /* ★ 上下パディングを削除、左右は維持 */
+        /* min-height: 60px; */ /* 固定高さにしたので不要 */
+    }
+
+    /* --- ロゴの切り替え --- */
+    .blog-logo-pc {
+        display: none; /* PC用ロゴを非表示 */
+    }
+    .blog-logo-sp {
+        display: block; /* スマホ用ロゴを表示 */
+        /* height: 45px; */ /* 高さは削除 */
+        max-height: calc(65px - 20px); /* ★ ヘッダー高さ(65px)より少し小さく */
+        width: auto;
+    }
+    /* --- ロゴの切り替え ここまで --- */
+
+    .blog-title {
+        gap: 14px; /* ★ ロゴとテキストの隙間 (前回調整値) */
+    }
+
+    .blog-title-text {
+        gap: 0; /* タイトルとサブタイトルの垂直隙間をなくす */
+    }
+
+    .blog-title-text h1 {
+        font-size: 1.35rem; /* ★ タイトルサイズ (前回調整値) */
+        margin: 0;
+        line-height: 1.2; /* 行間を詰める */
+    }
+
+    .blog-title-text .subtitle {
+        font-size: 0.85rem; /* ★ サブタイトルサイズ (前回調整値) */
+        line-height: 1.1; /* 行間を詰める */
+    }
+
+    .return-to-site {
+        padding: 4px 8px; /* ボタンのパディングは維持 */
+        font-size: 0.7rem; /* ボタンの文字サイズは維持 */
+        white-space: nowrap; /* ボタン内テキストの折り返しを防ぐ */
+    }
+
+    /* 既存の他のスマホ用スタイルは維持 */
+    .blog-container { grid-template-columns: 1fr; }
+    .post-image { height: 200px; }
+    .post-meta { flex-direction: column; align-items: flex-start; gap: 5px; }
+    /* .footer-nav は下の @media で再定義 */
+
+    /* ↓↓↓ 以前の指定を削除・コメントアウト ↓↓↓ */
+    /* .header-container { flex-direction: column; gap: 15px; text-align: center; } */
+    /* .blog-title { flex-direction: column; gap: 10px; } */
+    /* .blog-title-text { align-items: center; } */
+    /* ↑↑↑ 以前の指定を削除・コメントアウト ↑↑↑ */
+}
+
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: #666; /* Blog dark gray */
+}
+.post-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+
+
+.post-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.post-categories {
+    display: flex;
+    gap: 10px;
+}
+
+.post-category {
+    padding: 3px 8px;
+    background-color: #e5eef9; /* Blog tag background */
+    color: #4a6da7; /* Blog tag color */
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.post-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #4a6da7; /* Blog primary color */
+}
+
+.sidebar-section {
+    background-color: #fff; /* Blog card background */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eaeaea; /* Blog light gray */
+    color: #4a6da7; /* Blog primary color */
+}
+.return-to-site {
+    background-color: #4a6da7; /* Blog primary color */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+}
+
+.return-to-site:hover {
+    background-color: #e07676; /* Blog accent color */
+    color: white;
+}
+
+
+
+
+
+.post-excerpt {
+    margin-bottom: 15px;
+    color: #333; /* Blog text color */
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4a6da7; /* Blog primary color */
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.read-more:hover {
+    border-bottom-color: #4a6da7; /* Blog primary color */
+}
+
+
+.post-image-container .post-image {
+    display: block; /* 中央揃えのために必要 */
+    margin: 20px auto; /* 上下マージンと中央揃え */
+    max-width: 100%; /* コンテナ幅に合わせる */
+    height: auto;
+    max-height: 400px; /* 最大高さを指定 */
+    object-fit: contain; /* 画像全体を表示 */
+    border-radius: 8px;
+}
+
+.post-full-content img {
+    display: block; /* 中央揃えのために必要 */
+    margin: 20px auto; /* 上下マージンと中央揃え */
+    max-width: 100%; /* コンテナ幅に合わせる */
+    height: auto;
+    border-radius: 8px; /* 角丸 */
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #eaeaea; /* Blog light gray */
+}
+
+.profile-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile-title {
+    font-size: 0.85rem;
+    color: #666; /* Blog dark gray */
+    margin-bottom: 10px;
+}
+
+.profile-bio {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #4a6da7; /* Blog primary color */
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #eaeaea; /* Blog light gray */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #4a6da7; /* Blog primary color */
+    color: white;
+}
+
+.category-list, .archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-list li, .archive-list li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.category-list li:last-child, .archive-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.category-list a, .archive-list a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4a6da7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.category-list a:hover, .archive-list a:hover {
+    color: #e07676;
+}
+
+.category-icon {
+    font-size: 20px;
+    color: #4a6da7;
+}
+
+.category-count, .archive-count {
+    background-color: #e5eef9; /* Blog tag background */
+    color: #4a6da7; /* Blog tag color */
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-list li a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #e5eef9; /* Blog tag background */
+    color: #4a6da7; /* Blog tag color */
+    border-radius: 4px;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tag-list li a:hover {
+    background-color: #4a6da7; /* Blog primary color */
+    color: white;
+}
+
+/* Blog Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #fff; /* Blog card background */
+    border: 1px solid #ddd; /* Blog border color */
+    color: #4a6da7; /* Blog link color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-link:hover, .page-link.active {
+    background-color: #4a6da7; /* Blog primary color */
+    color: white;
+    border-color: #4a6da7; /* Blog primary color */
+}
+
+
+.footer-container { /* This might conflict with global .container */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-nav { /* This might conflict with global .footer-nav */
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-nav a { /* This might conflict with global .footer-nav a */
+    color: white;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.footer-nav a:hover {
+    opacity: 1;
+}
+
+.copyright { /* This might conflict with global .copyright */
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+
+
+/* Blog Post Inner Styles */
+.post-full-content {
+    padding: 30px;
+}
+
+.post-full-content h2 {
+    font-size: 1.4rem;
+    margin: 30px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eaeaea; /* Blog light gray */
+    color: #4a6da7; /* Blog primary color */
+}
+
+.post-full-content h3 {
+    font-size: 1.2rem;
+    margin: 25px 0 15px;
+    color: #4a6da7; /* Blog primary color */
+}
+
+.post-full-content p {
+    margin-bottom: 20px;
+}
+
+.post-full-content ul, .post-full-content ol {
+    margin: 0 0 20px 20px;
+    padding-left: 0; /* Override default padding */
+    list-style-position: inside; /* Ensure bullets are inside */
+}
+
+.post-full-content li {
+    margin-bottom: 10px;
+}
+
+.post-full-content img {
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.post-full-content blockquote {
+    background-color: #f8f9fa; /* Blog quote background */
+    border-left: 4px solid #dee2e6; /* Blog quote border */
+    padding: 15px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+.post-full-content code {
+    background-color: #f5f5f5; /* Blog code background */
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eaeaea; /* Blog light gray */
+}
+
+.post-tag {
+    padding: 5px 10px;
+    background-color: #e5eef9; /* Blog tag background */
+    color: #4a6da7; /* Blog tag color */
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+/* .copyright { width: 100%; text-align: center; margin-top: 0; padding-top: 0; font-size: 0.9em; color: #999; } */
+
+/* フッターのレスポンシブ対応 */
+@media (max-width: 768px) {
+    /* ブログ用フッターの調整 */
+    .blog-footer .footer-info { /* フッター情報エリア (もしあれば) */
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .blog-footer .footer-info p {
+        margin: 5px 0;
+        font-size: 0.8rem; /* 少し小さく */
+    }
+
+    .blog-footer .footer-nav { /* フッターナビ */
+        flex-direction: row; /* 横並びに戻す */
+        flex-wrap: wrap; /* 折り返し許可 */
+        justify-content: center;
+        gap: 10px 15px; /* リンク間の隙間 */
+        margin-bottom: 15px;
+    }
+
+    .blog-footer .footer-nav a {
+        width: auto; /* 幅自動 */
+        padding: 5px 10px; /* パディング調整 */
+        background-color: transparent; /* 背景透過 */
+        border-radius: 4px;
+        font-size: 0.8rem; /* 少し小さく */
+        color: white;
+        opacity: 0.9;
+    }
+
+    .blog-footer .copyright {
+        font-size: 0.8rem; /* 少し小さく */
+        margin-top: 15px;
+        padding-top: 0;
+    }
+}
+
+/* グローバルなフッターナビのスタイル（重複する可能性あり） */
+/* .footer-nav { margin-bottom: 30px; } */
+/* .footer-nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px 15px; } */
+/* .footer-nav li { margin: 0; } */
+/* .footer-nav a { color: var(--footer-text-color); padding: 5px 0; display: inline-block; } */
+/* .footer-nav a:hover { color: var(--white); opacity: 1; } */
+
+/* HP20250423upload版0614/css/blog_styles.css に追加 */
+
+/* ブログ記事一覧の間隔を調整 */
+.blog-main .blog-post {
+  margin-bottom: 30px; /* 各記事の下に30pxの余白を追加 */
+}
+
+/* 一覧の最後の記事には下の余白は不要なため削除 */
+.blog-main .blog-post:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オンライン診療 - 医療法人千心会 櫻井医院</title>
+
+    <meta name="description" content="医療法人千心会 櫻井医院のオンライン診療サービスについての情報です。再診患者様向けのオンライン診療、オンライン栄養相談、心臓リハビリテーション補助プログラムなどを提供しています。">
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/main_styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <link rel="canonical" href="https://sakurai-crc.org/telemedicine.html">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-container header-layout-alt"> <div class="header-left-area-alt"> <div class="logo-image-area">
+                 <h1 class="clinic-name">
+                    <a href="index.html" class="logo-link" aria-label="ホーム">
+                        <img src="images/logo-sakurai-clinic.png" alt="医療法人千心会 櫻井医院" class="header-logo">
+                    </a>
+                 </h1>
+            </div>
+        </div>
+
+        <div class="header-right-area-alt"> <div class="header-contact-info-top">
+                <span class="info-item">Tel: <a href="tel:027-352-1270">027-352-1270</a></span>
+                <span class="info-separator">|</span>
+                <span class="info-item">〒370-0035 群馬県高崎市柴崎町1213-2</span>
+                </div>
+
+            <nav class="header-nav" id="pc-nav" aria-label="グローバルナビゲーション">
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="first-visit.html">初めての方へ</a></li>
+                    <li><a href="index.html#services">診療内容</a></li>
+                    <li><a href="cardiac-rehab.html">心臓リハビリ</a></li>
+                    <li><a href="staff.html">スタッフ紹介</a></li>
+                    <li><a href="index.html#hours">診療時間</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <button type="button" class="hamburger-button" id="hamburger-button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="モバイルナビゲーション" aria-hidden="true">
+    <button class="close-button" aria-label="メニューを閉じる"></button>
+    <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="first-visit.html">初めての方へ</a></li>
+        <li><a href="index.html#services">診療内容</a></li>
+        <li><a href="cardiac-rehab.html">心臓リハビリ</a></li>
+        <li><a href="staff.html">スタッフ紹介</a></li>
+        <li><a href="index.html#hours">診療時間</a></li>
+        <li><a href="fees.html">自費料金のご案内</a></li>
+        <li><a href="access.html">アクセス</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+    </ul>
+    <div class="mobile-nav-contact">
+        <a href="tel:027-352-1270" class="phone-number">Tel: 027-352-1270</a>
+        <p class="address">〒370-0035 群馬県高崎市柴崎町1213-2</p>
+    </div>
+</nav>
+
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+</header>
+    
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="index.html#services">診療内容</a></li>
+                    <li>オンライン診療</li>
+                </ul>
+                <h2>オンライン診療</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="page-navigation">
+                <h4>このページの目次</h4>
+                <ul>
+                    <li><a href="#overview">オンライン診療について</a></li>
+                    <li><a href="#eligible">対象となる方</a></li>
+                    <li><a href="#flow">オンライン診療の流れ</a></li>
+                    <li><a href="#nutrition">オンライン栄養相談</a></li>
+                    <li><a href="#rehab">心臓リハビリ補助プログラム</a></li>
+                    <li><a href="#tablet">貸出タブレットについて</a></li>
+                    <li><a href="#faq">よくある質問</a></li>
+                </ul>
+            </div>
+
+            <section id="overview" class="online-section">
+                <h3>オンライン診療について</h3>
+
+                <p>当院では、通院が困難な方や、お仕事で忙しい方のために、オンラインでの診療サービスを提供しています。スマートフォンやタブレット、パソコンを使用して、ご自宅やオフィスなど、お好きな場所から診療を受けることができます。</p>
+
+                <p>現在、オンライン診療は<strong>再診の患者様のみ</strong>を対象としています。初診の方は一度、当院での対面診療をお願いいたします。</p>
+
+                <div class="online-cards">
+                    <div class="online-card">
+                        <h4>オンライン診療のメリット</h4>
+                        <ul class="online-list">
+                            <li>通院時間の短縮・移動の負担軽減</li>
+                            <li>待ち時間のストレス軽減</li>
+                            <li>感染症リスクの低減</li>
+                            <li>お忙しい方でも診療を継続しやすい</li>
+                            <li>遠方にお住まいの方でも継続診療が可能</li>
+                        </ul>
+                    </div>
+
+                    <div class="online-card">
+                        <h4>オンライン診療の主な対象疾患</h4>
+                        <ul class="online-list">
+                            <li>高血圧症</li>
+                            <li>脂質異常症</li>
+                            <li>心不全（安定期）</li>
+                            <li>狭心症（安定期）</li>
+                            <li>不整脈（経過観察中のもの）</li>
+                            <li>睡眠時無呼吸症候群（CPAP療法中）</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <h4>保険適用について</h4>
+                    <p>オンライン診療は、健康保険が適用される場合と自費診療となる場合があります。詳細は診療内容によって異なりますので、スタッフにお尋ねください。処方薬についても保険適用薬と自費薬があります。</p>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+
+            <section id="eligible" class="online-section">
+                <h3>対象となる方</h3>
+
+                <div class="online-cards">
+                    <div class="online-card">
+                        <h4>オンライン診療の対象となる方</h4>
+                        <ul class="online-list">
+                            <li>当院に通院中の患者様（再診の方のみ）</li>
+                            <li>オンライン診療に同意いただける方</li>
+                            <li>スマートフォン、タブレットまたはパソコンとインターネット環境をお持ちの方</li>
+                            <li>状態が安定していると医師が判断した方</li>
+                        </ul>
+                    </div>
+
+                    <div class="online-card">
+                        <h4>オンライン診療が難しい場合</h4>
+                        <ul class="online-list">
+                            <li>初診の患者様</li>
+                            <li>状態が不安定な患者様</li>
+                            <li>対面での診察や検査が必要と医師が判断した場合</li>
+                            <li>緊急性がある症状をお持ちの場合</li>
+                        </ul>
+                        <p>※これらの場合は、対面診療をお願いしています。</p>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <h4>インターネット環境やデバイスがない方へ</h4>
+                    <p>インターネット環境やスマートフォン・タブレットをお持ちでない方には、当院で通信機能付きタブレットの貸出も行っています。詳しくは「<a href="#tablet">貸出タブレットについて</a>」をご覧ください。</p>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+
+            <section id="flow" class="online-section">
+                <h3>オンライン診療</h3>
+
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 class="step-title">予約</h4>
+                            <p>電話（027-352-1270）でオンライン診療の予約をお取りください。その際、「オンライン診療希望」とお伝えください。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 class="step-title">アプリのインストール</h4>
+                            <p>オンライン診療には専用アプリを使用します。予約時にアプリのインストール方法についてご案内します。（貸出タブレットをご利用の場合は、すでにインストールされています）</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 class="step-title">診察準備</h4>
+                            <p>予約時間の5分前に招待メールが届きます。3分前までに、入室の上、お待ちください。静かで明るい場所で、可能であれば、自宅での測定データ（血圧、体重、脈拍など）をお手元にご用意しておいてください。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4 class="step-title">診察</h4>
+                            <p>アプリにログインして医師との診察を受けます。症状や経過、お薬の状況などについてお話しください。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4 class="step-title">お薬の処方</h4>
+                            <p>必要に応じてお薬が処方されます。処方箋は指定の薬局へFAXで送付され、調剤後にご自宅へ配送または薬局での受け取りとなります。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4 class="step-title">会計・次回予約</h4>
+                            <p>診察料のお支払いは、次回受診日に窓口でお支払いください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <h4>通信環境について</h4>
+                    <p>安定したインターネット環境（Wi-FiやLTE/4G/5G）での接続をお勧めします。通信環境が不安定な場合は、診察に支障が出る可能性があります。</p>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+
+            <section id="nutrition" class="online-section">
+                <h3>オンライン栄養相談</h3>
+
+                <p>当院では、管理栄養士によるオンラインでの栄養相談も実施しています。循環器疾患や生活習慣病の方に適した食事療法のアドバイスや、日々の食事に関する疑問・相談に対応します。</p>
+
+                <div class="online-cards">
+                    <div class="online-card">
+                        <h4>オンライン栄養相談の対象</h4>
+                        <ul class="online-list">
+                            <li>当院に通院中の患者様</li>
+                            <li>循環器疾患（高血圧、高脂血症、心不全など）の食事療法が必要な方</li>
+                            <li>糖尿病や腎臓病などの食事療法が必要な方</li>
+                            <li>健康的な食生活について相談したい方</li>
+                            <li>体重管理や減量を目指している方</li>
+                        </ul>
+                    </div>
+
+                    <div class="online-card">
+                        <h4>栄養相談の内容例</h4>
+                        <ul class="online-list">
+                            <li>減塩食の具体的な方法</li>
+                            <li>コレステロールや中性脂肪を下げる食事</li>
+                            <li>心不全患者の水分・塩分管理</li>
+                            <li>糖尿病の食事療法</li>
+                            <li>体重管理のための栄養バランス</li>
+                            <li>食事記録の評価とアドバイス</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="program-info">
+                    <h4>栄養相談の予約・料金</h4>
+                    <table>
+                        <tr>
+                            <th>相談時間</th>
+                            <td>20〜30分/回</td>
+                        </tr>
+                        <tr>
+                            <th>自己負担金</th>
+                            <td>初回 235円〜705円/回, 2回目以降 180円〜540円/回<br>別途システム利用料300円</td>
+                        </tr>
+                        <tr>
+                            <th>予約方法</th>
+                            <td>電話（027-352-1270）で「オンライン栄養相談希望」とお伝えください</td>
+                        </tr>
+                        <tr>
+                            <th>必要なもの</th>
+                            <td>食事記録（可能であれば3日分）、食事の写真（あれば）</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 15px; font-size: 0.9em;">※医師から食事指導の指示がある場合は保険適応になります。<br>※特に治療中のご病気がない方については健康保険は適用されませんので、自費診療となります。料金は、3,300円です。</p>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+
+            <section id="rehab" class="online-section">
+                <h3>心臓リハビリ補助プログラム</h3>
+
+                <p>当院では、心臓リハビリテーションを受けている患者様向けに、自宅での運動継続をサポートするための「心臓リハビリ補助プログラム」を提供しています。このプログラムでは、通信機能付きタブレットを使用して、自宅での運動状況を医療スタッフが遠隔でモニタリングし、定期的にオンラインでのアドバイスや指導を行います。</p>
+
+                <div class="online-cards">
+                    <div class="online-card">
+                        <h4>プログラムの対象者</h4>
+                        <ul class="online-list">
+                            <li>当院で心臓リハビリテーションを受けている患者様</li>
+                            <li>主治医が自宅での運動継続が可能と判断した方</li>
+                            <li>通院が困難な方や、通院回数を減らしたい方</li>
+                            <li>自宅での運動がなかなか出来ない方</li>
+                        </ul>
+                    </div>
+
+                    <div class="online-card">
+                        <h4>プログラムの内容</h4>
+                        <ul class="online-list">
+                            <li>通信機能付きタブレットの貸出</li>
+                            <li>専用アプリによる自宅での体重・血圧・運動記録</li>
+                            <li>理学療法士による集団運動療法（月8回）</li>
+                            <li>保健師・栄養士による生活アドバイス（月1回）</li>
+                            <li>月間レポートの発行</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="program-info">
+                    <h4>心臓リハビリ補助プログラム詳細</h4>
+                    <table>
+                        <tr>
+                            <th>期間</th>
+                            <td>3ヶ月間（延長可能）</td>
+                        </tr>
+                        <tr>
+                            <th>料金</th>
+                            <td>月額 6,600円<br>※タブレットレンタル料、通信料込み、設置用三脚附属<br>※通信環境確認のため開始月は試用期間とし翌月からの料金となります。<br></td>
+                        </tr>
+                        <tr>
+                            <th>指導回数</th>
+                            <td>理学療法士によるオンライン指導（50分）：筋トレ 月4回　有酸素運動 月４回<br>医療スタッフによるオンライン面談（20分）：月1回</td>
+                        </tr>
+                        <tr>
+                            <th>必要機器</th>
+                            <td>当院から貸出する通信機能付きタブレット</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 15px; font-size: 0.9em;">※このプログラムは自費診療となります。</p>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+
+
+            <section id="flow" class="online-section">
+                <h3>セッションの流れ</h3>
+
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 class="step-title">セッション予約</h4>
+                            <p>前日までに電話（027-352-1270）でオンライン運動療法の予約をお取りください。折り返しタブレットのメールアプリに予約完了のメールが届きます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 class="step-title">セッション受付</h4>
+                            <p>血圧と脈拍、体重測定を済ませておいて、予約時間の10分前に、予約完了メールのリンクをクリックしてセッションに接続してください。接続時にはマイクとビデオカメラをオンにしておいてください。（メディカルチェック）を送りますので、記入して登録してください。スタッフが問題がないと確認ができれば､運動療法に参加できます。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 class="step-title">運動療法の準備</h4>
+                            <p>周囲に障害物がない明るい場所で、ヨガマット/ボール/セラバンド/ステップ台を用意してください。自分の全身がカメラに写るようにタブレットを三脚にセットして正面に設置してください。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4 class="step-title">ストレッチング</h4>
+                            <p>スタッフの指示に従ってストレッチング/準備体操を行います</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4 class="step-title">運動療法</h4>
+                            <p>有酸素運動/筋力トレーニングをスタッフの指示で開始します。途中、脈拍や症状、ボルグスケールなど尋ねる場合があります。何か気になることがあればスタッフにお話しください。</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4 class="step-title">整理体操・リラクゼーション</h4>
+                            <p>整理体操を行って終了です。終了後の血圧、脈拍を測定してください。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <h4>トレーニング用品</h4>
+                    <p>運動療法に使用する、セラバンドやボール、ステップ台などは医院窓口で扱っております。あらかじめ用意しておいてください。</p>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+
+
+
+
+
+
+            <section id="tablet" class="online-section">
+                <h3>貸出タブレットについて</h3>
+
+                <p>当院では、スマートフォンやタブレット、インターネット環境をお持ちでない患者様のために、通信機能付きタブレットの貸出サービスを行っています。このタブレットは簡単な操作で使用でき、オンライン診療やオンライン栄養相談、心臓リハビリ補助プログラムに利用できます。</p>
+
+                <div class="tablet-info">
+                    <div class="tablet-image">
+                        <img src="images/tablet.jpg" alt="通信機能付きタブレット" loading="lazy">
+                    </div>
+
+                    <div class="tablet-content">
+                        <h4>タブレット仕様</h4>
+                        <dl class="tablet-specs">
+                            <dt>タイプ</dt>
+                            <dd>10.5インチ タブレット（通信機能付き）</dd>
+
+                            <dt>通信方式</dt>
+                            <dd>4G/LTE（SIMカード内蔵）</dd>
+
+                            <dt>特徴</dt>
+                            <dd>
+                                <ul class="online-list">
+                                    <li>Wi-Fi環境がなくても使用可能</li>
+                                    <li>必要なアプリはあらかじめインストール済み</li>
+                                    <li>シンプルな操作画面で初心者でも使いやすい</li>
+                                    <li>大画面で見やすい</li>
+                                    <li>血圧計・体重計・心拍モニター　自動連携機能<br>
+                                    ※対応機種はおたずねください</li>
+                                </ul>
+                            </dd>
+
+                            <dt>貸出料金</dt>
+                            <dd>月額 3,300円（税込）<br>※通信料込み<br>※補償金として10,000円を預からせていただきます。タブレット返却時に返金いたします。</dd>
+
+                            <dt>貸出期間</dt>
+                            <dd>最低1ヶ月から（延長可能）</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <h4>タブレット貸出のお申し込み</h4>
+                    <p>タブレットの貸出をご希望の方は、受付スタッフまたは電話（027-352-1270）でお申し込みください。使用方法の説明も丁寧に行いますので、ご安心ください。</p>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+
+            <section id="faq" class="online-section">
+                <h3>よくある質問</h3>
+
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <p class="faq-question">オンライン診療は初診でも受けられますか？</p>
+                        <p class="faq-answer">当院では、現在オンライン診療は再診の患者様のみを対象としています。初診の方は一度、当院での対面診療をお願いいたします。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <p class="faq-question">オンライン診療の予約はどうすればよいですか？</p>
+                        <p class="faq-answer">電話（027-352-1270）で「オンライン診療希望」とお伝えいただき、予約をお取りください。予約時に詳細な手順をご案内します。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <p class="faq-question">オンライン診療でも薬は処方してもらえますか？</p>
+                        <p class="faq-answer">はい、医師の判断で薬の処方は可能です。処方箋は指定の薬局へFAXで送付され、調剤後にご自宅へ配送または薬局での受け取りとなります。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <p class="faq-question">オンライン診療の費用はどのくらいですか？</p>
+                        <p class="faq-answer">オンライン診療は、一定の条件を満たせば健康保険が適用されます。診療内容によって費用は異なりますので、詳しくはスタッフにお尋ねください。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <p class="faq-question">通信が途切れたらどうすればよいですか？</p>
+                        <p class="faq-answer">通信が途切れた場合は、アプリを再起動して再度接続を試みてください。それでも接続できない場合は、当院から電話でご連絡します。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <p class="faq-question">心臓リハビリ補助プログラムの効果はどうですか？</p>
+                        <p class="faq-answer">遠隔での運動療法の効果は、対面での運動療法と同等です。自宅での運動を継続的に行うことで、心肺機能の改善、QOL（生活の質）の向上、再入院リスクの低減などの効果が期待できます。定期的なオンライン指導により、安全かつ効果的に運動を継続できます。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <p class="faq-question">タブレットの操作が不安ですが、サポートはありますか？</p>
+                        <p class="faq-answer">はい、タブレットをお渡しする際に、スタッフが丁寧に使用方法をご説明します。また、操作方法を記載した簡単なマニュアルもお渡しします。操作で困ったことがあれば、いつでもお電話でサポートいたします。</p>
+                    </div>
+                </div>
+
+                <div class="back-to-top">
+                    <a href="#">▲ ページトップへ戻る</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-info">
+                <p class="clinic-name-footer">医療法人千心会 櫻井医院</p>
+                <p>〒370-0035 群馬県高崎市柴崎町1213-2</p>
+                <p>Tel: <a href="tel:027-352-1270">027-352-1270</a></p>
+            </div>
+            <nav class="footer-nav" aria-label="フッターナビゲーション">
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="first-visit.html">初めての方へ</a></li>
+                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="fees.html">自費料金のご案内</a></li>
+                    <li><a href="clinic-info.html">院内掲示・施設基準</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                    <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+                    <li><a href="sitemap.html">サイトマップ</a></li>
+                </ul>
+            </nav>
+            <p class="copyright">© 2025 医療法人千心会 櫻井医院 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="floating-contact">
+        <a href="tel:027-352-1270" class="floating-tel">電話で予約 027-352-1270</a>
+        <a href="https://lin.ee/bmm3cSS" class="floating-line" target="_blank" rel="noopener noreferrer" aria-label="LINEで問い合わせる"><img src="/images/LINE2.png" alt="LINEで問い合わせる"></a>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

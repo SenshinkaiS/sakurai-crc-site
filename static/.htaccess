@@ -1,0 +1,52 @@
+# =====================================================
+# 医療法人千心会 櫻井医院 (sakurai-crc.org)
+# 注意: アップロード前にサーバ上の既存 .htaccess と内容を比較すること
+# (旧リダイレクト定義は下記 mod_rewrite ブロックに引き継ぎ済み)
+# =====================================================
+
+# --- 旧URLからのリダイレクト ---
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^features/?$ /index.html#features [R=301,L,NE]
+	RewriteRule ^portfolio/?$ /index.html#services [R=301,L,NE]
+	RewriteRule ^team/?$ /index.html#staff [R=301,L,NE]
+	RewriteRule ^policy/?$ /index.html#policy [R=301,L,NE]
+	RewriteRule ^hours/?$ /index.html#hours [R=301,L,NE]
+	RewriteRule ^partners/?$ /index.html#partners [R=301,L,NE]
+	RewriteRule ^contact/?$ /access.html [R=301,L,NE]
+	RewriteRule ^blog/?$ /blog/dr-blog.html [R=301,L,NE]
+</IfModule>
+
+# --- カスタム404ページ ---
+ErrorDocument 404 /404.html
+
+# --- セキュリティヘッダ ---
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set X-Frame-Options "SAMEORIGIN"
+	Header always set Referrer-Policy "strict-origin-when-cross-origin"
+	Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+# --- ブラウザキャッシュ ---
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType image/jpeg "access plus 1 month"
+	ExpiresByType image/png "access plus 1 month"
+	ExpiresByType image/webp "access plus 1 month"
+	ExpiresByType image/x-icon "access plus 1 month"
+	ExpiresByType text/css "access plus 1 week"
+	ExpiresByType application/javascript "access plus 1 week"
+	ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# --- 転送量削減 (gzip圧縮) ---
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- バックアップ・隠しファイルへのアクセス拒否 ---
+<FilesMatch "(^\.|_bk\.|\.bak$|\.old$|~$)">
+	Require all denied
+</FilesMatch>

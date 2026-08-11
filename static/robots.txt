@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /cardiac-rehab.html
+Allow: /checkup.html
+Allow: /vaccination.html
+Allow: /services/
+Allow: /news/
+Allow: /privacy-policy.html
+Allow: /sitemap.html
+Allow: /contact.html
+
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+Sitemap: https://sakurai-crc.org/sitemap.xml 

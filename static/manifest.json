@@ -1,0 +1,21 @@
+{
+    "name": "医療法人千心会 櫻井医院",
+    "short_name": "櫻井医院",
+    "description": "内科・循環器内科・心臓リハビリに力を入れる群馬県高崎市のクリニック",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6c757d",
+    "icons": [
+        {
+            "src": "images/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+} 

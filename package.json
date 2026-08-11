@@ -1,0 +1,16 @@
+{
+  "name": "sakurai-crc-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "医療法人千心会 櫻井医院 公式サイト (Eleventy + microCMS)",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "migrate": "node scripts/migrate-to-microcms.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "marked": "^12.0.0"
+  }
+}

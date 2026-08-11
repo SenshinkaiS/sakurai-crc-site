@@ -1,0 +1,171 @@
+---
+permalink: "blog/dr-blog.html"
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>院長ブログ - 医療法人千心会 櫻井医院</title>
+
+    <meta name="description" content="医療法人千心会 櫻井医院 院長 櫻井繁樹のブログです。医療情報や日々の診療で感じたこと、健康に関する話題などを発信しています。">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="manifest" href="../manifest.json">
+
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../css/blog_styles.css">
+
+    <script src="blog-data.js"></script>
+    <script src="blog-functions.js" defer></script>
+    <link rel="canonical" href="https://sakurai-crc.org/blog/dr-blog.html">
+</head>
+
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+       <a href="dr-blog.html" class="blog-title-link" style="text-decoration: none; display: flex; align-items: center;">
+            <div class="blog-title">
+                <img src="../images/logo-sakurai-clinic.png" alt="櫻井医院ロゴ" class="blog-logo-pc">
+                <img src="../images/logo-small.png" alt="櫻井医院ロゴ" class="blog-logo-sp">
+                <div class="blog-title-text">
+                    <h1>院長ブログ</h1>
+                    <span class="subtitle">櫻井繁樹の医療ノート</span>
+                </div>
+            </div>
+        </a>
+            <a href="../index.html" class="return-to-site">クリニックへ戻る</a>
+        </div>
+    </header>
+
+    <main class="blog-container">
+        <div class="blog-main">
+
+            <div id="blog-posts-container">
+{%- for post in blog.posts | batch(5) | first %}
+                <article class="blog-post">
+                    <img src="{{ post.image }}" alt="{{ post.alt }}" class="post-image">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg>
+                                {{ post.dateJa }}
+                            </div>
+                            <div class="post-categories">{% for cat in post.categories %}<span class="post-category">{{ cat }}</span>{% endfor %}</div>
+                        </div>
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        <div class="post-excerpt"><p>{{ post.excerpt }}</p></div>
+                        <a href="posts/{{ post.slug }}.html" class="read-more">続きを読む</a>
+                    </div>
+                </article>
+{%- endfor %}
+            </div>
+            
+            <div class="pagination" id="pagination-container">
+{%- set totalPages = ((blog.posts | length) / 5) | round(0, "ceil") | int %}
+{%- if totalPages > 1 %}
+{%- for i in range(1, totalPages + 1) %}
+                <a href="dr-blog.html?page={{ i }}" class="page-link{% if i == 1 %} active{% endif %}">{{ i }}</a>
+{%- endfor %}
+                <a href="dr-blog.html?page=2" class="page-link">&raquo;</a>
+{%- endif %}
+            </div>
+        </div>
+
+        <aside class="blog-sidebar">
+            <div class="sidebar-section profile-section">
+                <img src="../images/doctor_blog.jpg" alt="櫻井繁樹院長" class="profile-image">
+                <h3 class="profile-name">櫻井 繁樹</h3>
+                <p class="profile-title">循環器内科医・院長</p>
+                <p class="profile-bio">群馬大学医学部卒業。循環器内科医として30年以上,
+                診療に携わり、特に心臓リハビリテーションを専門としています。このブログでは、医療情報や健康に関する話題を分かりやすくお伝えしたいと思います。</p>
+                <div class="social-links">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                        <a href="https://open.spotify.com/show/4ZwYJO3iZP1De0Z0VtYnhW" aria-label="Spotifyチャンネル" target="_blank" rel="noopener noreferrer" style="background: none; border-radius: 0; width: auto; height: auto;">
+                            <img src="../images/Full_Logo_Black_CMYK.png" alt="Spotifyロゴ" style="height: 32px; max-width: 120px; width: auto;">
+                        </a>
+                        <p style="font-size: 0.85em; margin: 0; line-height: 1.4; text-align: center;">
+                            こちらもどうそ。音声による心リハと運動生理学に関する論文をピックアップして対話形式でお届けしています
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">カテゴリー</h3>
+                <ul class="category-list">
+{%- for cat in blog.categories %}
+                    <li><a href="template-category.html?name={{ cat | urlencode }}"><i class="material-icons category-icon">folder_open</i><span>{{ cat }}</span></a></li>
+{%- endfor %}
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">アーカイブ</h3>
+                <ul class="archive-list">
+{%- for m in blog.months %}
+                    <li><a href="template-archive.html?month={{ m }}"><i class="material-icons category-icon">calendar_today</i><span>{{ m.slice(0,4) }}年{{ m.slice(5,7) | int }}月</span></a></li>
+{%- endfor %}
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">タグ</h3>
+                <ul class="tag-list">
+{%- for t in blog.tags %}
+                    <li><a href="template-tag.html?tag={{ t | urlencode }}">{{ t }}</a></li>
+{%- endfor %}
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">クリニックからのお知らせ</h3>
+                <ul class="category-list">
+                     <li><a href="../index.html#news"><i class="material-icons category-icon">campaign</i><span>今年も健診が始まります</span></a></li>
+                     <li><a href="../index.html#news"><i class="material-icons category-icon">campaign</i><span>ゴールデンウィーク期間の診療について</span></a></li>
+                     <li><a href="../index.html#news"><i class="material-icons category-icon">campaign</i><span>在宅心臓リハビリ支援プログラム開始</span></a></li>
+                     <li><a href="../telemedicine.html"><i class="material-icons category-icon">campaign</i><span>オンライン診療のご案内</span></a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <nav class="footer-nav">
+                <a href="../index.html">クリニックホーム</a>
+                <a href="../index.html#services">診療内容</a>
+                <a href="../access.html">アクセス</a>
+                <a href="../contact.html">お問い合わせ</a>
+                <a href="../privacy-policy.html">プライバシーポリシー</a>
+            </nav>
+            <p class="copyright">© 2025 医療法人千心会 櫻井医院 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 現在のページをハイライト
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.page-link');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <div class="floating-contact">
+        <a href="tel:027-352-1270" class="floating-tel">電話で予約 027-352-1270</a>
+        <a href="https://lin.ee/bmm3cSS" class="floating-line" target="_blank" rel="noopener noreferrer" aria-label="LINEで問い合わせる"><img src="/images/LINE2.png" alt="LINEで問い合わせる"></a>
+    </div>
+
+</body>
+</html>
