@@ -10,6 +10,9 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    env:
+      # FTP情報が未登録のうちはデプロイステップを自動スキップするための判定用
+      FTP_CONFIGURED: ${{ secrets.FTP_SERVER }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,7 +34,7 @@ jobs:
 
       - name: Deploy via FTPS
         # FTP情報が未登録のうちはこのステップを自動スキップ（ビルド確認だけ行う）
-        if: ${{ secrets.FTP_SERVER != '' }}
+        if: ${{ env.FTP_CONFIGURED != '' }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
