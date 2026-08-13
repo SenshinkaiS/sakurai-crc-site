@@ -1,53 +1,107 @@
-// さくらインターネット向けFTPデプロイスクリプト
-// さくらのFTPは複数階層の一括移動(CWD a/b)に非対応のため、1階層ずつ移動する。
-// _site/ の内容を /home/<アカウント>/www/sakurai-crc.org/ にアップロードする（追加・上書きのみ。削除はしない）。
+// さくらインターネット向けFTPデプロイスクリプト（堅牢版）
+// - さくらのFTPは複数階層の一括移動に非対応 → 1階層ずつ移動
+// - 一部ファイルが書き込み禁止権限 → 550 Permission denied 時は SITE CHMOD 644 で自動修正して再試行
+// - 一時的な切断(ECONNRESET等) → 再接続して続きから再開
+// _site/ の内容を www/sakurai-crc.org/ にアップロード（追加・上書きのみ。削除はしない）
 import { Client } from "basic-ftp";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 
 const HOST = process.env.FTP_SERVER;
 const USER = process.env.FTP_USERNAME;
 const PASS = process.env.FTP_PASSWORD;
-// ログイン直下(/home/<アカウント>)からの相対パスを1階層ずつ
-const TARGET_SEGMENTS = ["www", "sakurai-crc.org"];
+const BASE = ["www", "sakurai-crc.org"];
+const LOCAL = "_site";
 
 if (!HOST || !USER || !PASS) {
   console.error("FTP_SERVER / FTP_USERNAME / FTP_PASSWORD が設定されていません");
   process.exit(1);
 }
 
-const client = new Client(120000);
-client.ftp.verbose = false;
-
-try {
-  await client.access({ host: HOST, user: USER, password: PASS, secure: false });
-  console.log(`ログイン成功。現在地: ${await client.pwd()}`);
-
-  for (const seg of TARGET_SEGMENTS) {
-    await client.cd(seg);
+async function collect(dir, rel = "") {
+  const out = [];
+  for (const e of await fs.readdir(dir, { withFileTypes: true })) {
+    const lp = path.join(dir, e.name);
+    const rp = rel ? rel + "/" + e.name : e.name;
+    if (e.isDirectory()) out.push(...(await collect(lp, rp)));
+    else out.push({ local: lp, rel: rp });
   }
-  console.log(`アップロード先: ${await client.pwd()}`);
+  return out.sort((a, b) => a.rel.localeCompare(b.rel));
+}
 
-  console.log("_site/ の内容をアップロードします（追加・上書きのみ、削除なし）...");
-  const started = Date.now();
-  let attempt = 0;
-  const MAX_ATTEMPTS = 4;
-  for (;;) {
+let client;
+let curDir = [];
+async function connect() {
+  client = new Client(60000);
+  await client.access({ host: HOST, user: USER, password: PASS, secure: false });
+  for (const s of BASE) await client.cd(s);
+  curDir = [];
+}
+async function goTo(segs) {
+  let common = 0;
+  while (common < curDir.length && common < segs.length && curDir[common] === segs[common]) common++;
+  for (let i = curDir.length; i > common; i--) await client.cdup();
+  for (let i = common; i < segs.length; i++) {
     try {
-      attempt++;
-      await client.uploadFromDir("_site");
-      break;
-    } catch (e) {
-      if (attempt >= MAX_ATTEMPTS) throw e;
-      console.log(`切断されたため再接続して再試行します (${attempt}/${MAX_ATTEMPTS}): ${e.message}`);
-      await new Promise((r) => setTimeout(r, 5000));
-      client.close();
-      await client.access({ host: HOST, user: USER, password: PASS, secure: false });
-      for (const seg of TARGET_SEGMENTS) await client.cd(seg);
+      await client.cd(segs[i]);
+    } catch {
+      await client.send("MKD " + segs[i]).catch(() => {});
+      await client.cd(segs[i]);
     }
   }
-  console.log(`アップロード完了 (${Math.round((Date.now() - started) / 1000)}秒)`);
-} catch (err) {
-  console.error("デプロイ失敗:", err.message);
-  process.exit(1);
-} finally {
-  client.close();
+  curDir = segs.slice();
 }
+
+const files = await collect(LOCAL);
+console.log(`アップロード対象: ${files.length} ファイル`);
+await connect();
+console.log(`接続成功。アップロード先: ${await client.pwd()}`);
+
+const failed = [];
+let okCount = 0;
+for (const f of files) {
+  const segs = f.rel.split("/");
+  const name = segs.pop();
+  let done = false;
+  let lastErr = "";
+  for (let attempt = 1; attempt <= 3 && !done; attempt++) {
+    try {
+      await goTo(segs);
+      await client.uploadFrom(f.local, name);
+      done = true;
+    } catch (e) {
+      lastErr = String(e.message || e);
+      if (/permission denied/i.test(lastErr)) {
+        // 権限を修正して再試行
+        try {
+          await client.send(`SITE CHMOD 644 ${name}`);
+          await client.uploadFrom(f.local, name);
+          done = true;
+          console.log(`権限を修正して上書き: ${f.rel}`);
+        } catch (e2) {
+          lastErr = String(e2.message || e2);
+        }
+      } else {
+        // 接続系エラー: 再接続
+        try { client.close(); } catch {}
+        await new Promise((r) => setTimeout(r, 3000));
+        try { await connect(); } catch (e3) { lastErr = String(e3.message || e3); }
+      }
+    }
+  }
+  if (done) {
+    okCount++;
+  } else {
+    failed.push(`${f.rel} (${lastErr})`);
+    console.log(`失敗: ${f.rel} (${lastErr})`);
+  }
+}
+
+console.log(`完了: 成功 ${okCount} / ${files.length}`);
+client.close();
+if (failed.length > 0) {
+  console.error(`以下の ${failed.length} ファイルが失敗しました:`);
+  for (const f of failed) console.error("  " + f);
+  process.exit(1);
+}
+console.log("デプロイ成功");
