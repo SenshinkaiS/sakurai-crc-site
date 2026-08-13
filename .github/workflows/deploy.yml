@@ -47,6 +47,7 @@ jobs:
           # サーバー上の遺物(bk/等)を壊さないための設定。安定運用後に見直し可。
           dangerous-clean-slate: false
           state-name: .ftp-deploy-sync-state.json
+          log-level: verbose
           exclude: |
             **/.git*
             **/.git*/**
