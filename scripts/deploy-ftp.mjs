@@ -28,7 +28,22 @@ try {
 
   console.log("_site/ の内容をアップロードします（追加・上書きのみ、削除なし）...");
   const started = Date.now();
-  await client.uploadFromDir("_site");
+  let attempt = 0;
+  const MAX_ATTEMPTS = 4;
+  for (;;) {
+    try {
+      attempt++;
+      await client.uploadFromDir("_site");
+      break;
+    } catch (e) {
+      if (attempt >= MAX_ATTEMPTS) throw e;
+      console.log(`切断されたため再接続して再試行します (${attempt}/${MAX_ATTEMPTS}): ${e.message}`);
+      await new Promise((r) => setTimeout(r, 5000));
+      client.close();
+      await client.access({ host: HOST, user: USER, password: PASS, secure: false });
+      for (const seg of TARGET_SEGMENTS) await client.cd(seg);
+    }
+  }
   console.log(`アップロード完了 (${Math.round((Date.now() - started) / 1000)}秒)`);
 } catch (err) {
   console.error("デプロイ失敗:", err.message);

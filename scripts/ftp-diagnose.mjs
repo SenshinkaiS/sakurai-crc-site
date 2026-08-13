@@ -26,3 +26,21 @@ try {
 } finally {
   c.close();
 }
+
+// ---- 書き込みテスト ----
+import { Readable } from "node:stream";
+const c2 = new Client(30000);
+try {
+  await c2.access({ host: process.env.FTP_SERVER, user: process.env.FTP_USERNAME, password: process.env.FTP_PASSWORD, secure: false });
+  await c2.cd("www");
+  await c2.cd("sakurai-crc.org");
+  console.log("== 書き込みテスト: deploy-test.txt を1件アップロード ==");
+  await c2.uploadFrom(Readable.from(["deploy test " + new Date().toISOString()]), "deploy-test.txt");
+  console.log("アップロード成功");
+  await c2.remove("deploy-test.txt");
+  console.log("テストファイル削除成功（書き込みは正常です）");
+} catch (e) {
+  console.log("書き込みテスト失敗:", e.message);
+} finally {
+  c2.close();
+}
