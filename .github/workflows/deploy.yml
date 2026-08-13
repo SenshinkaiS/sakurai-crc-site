@@ -42,7 +42,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           local-dir: _site/
-          server-dir: /www/sakurai-crc.org/
+          server-dir: /home/sakurai-crc/www/sakurai-crc.org/
           # 安全のため削除同期はしない（追加・上書きのみ）。
           # サーバー上の遺物(bk/等)を壊さないための設定。安定運用後に見直し可。
           dangerous-clean-slate: false
