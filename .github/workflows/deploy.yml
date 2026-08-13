@@ -32,23 +32,12 @@ jobs:
           MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
           MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
 
-      - name: Deploy via FTPS
+      - name: Deploy via FTP
         # FTP情報が未登録のうちはこのステップを自動スキップ（ビルド確認だけ行う）
+        # さくらのFTP仕様(複数階層CWD不可)対応のため専用スクリプトでアップロードする
         if: ${{ env.FTP_CONFIGURED != '' }}
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: _site/
-          server-dir: /home/sakurai-crc/www/sakurai-crc.org/
-          # 安全のため削除同期はしない（追加・上書きのみ）。
-          # サーバー上の遺物(bk/等)を壊さないための設定。安定運用後に見直し可。
-          dangerous-clean-slate: false
-          state-name: .ftp-deploy-sync-state.json
-          log-level: verbose
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+        run: node scripts/deploy-ftp.mjs
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
