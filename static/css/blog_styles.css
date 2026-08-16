@@ -716,3 +716,150 @@ h2 {
 .blog-main .blog-post:last-child {
   margin-bottom: 0;
 }
+
+
+/* ============================================================
+   院長ブログ 記事本文スタイル ― 追補
+   医療法人千心会 櫻井医院 / sakurai-crc-site
+   ------------------------------------------------------------
+   既存の static/css/blog_styles.css の【末尾に追記】して使う。
+   （既存の指定を書き換えず、後から上書きする形にしてある）
+
+   目的：microCMSリッチエディタが出力するHTMLと、既存CSSの
+         ずれを埋める。具体的には次の3点を修正する。
+
+   1. 見出しが装飾されない
+      リッチエディタは見出しを <h4> で出力するが、既存CSSは
+      .post-full-content の h2 / h3 しか装飾していないため、
+      h4 は汎用ルール（太字のみ）しか当たらず見出しに見えない。
+
+   2. 箇条書きの点が出ない
+      CSS冒頭の `ul { list-style: none; }` が効いたままで、
+      .post-full-content 側で復帰させていない。
+      このため記事中で「・」を手打ちする必要が生じていた。
+
+   3. <hr> が素っ気ない
+      章の区切りに多用されているが未指定。
+
+   ※ 配色は既存のブログ配色（#4a6da7 / #eaeaea）に合わせてある。
+   ============================================================ */
+
+/* ---- 1. 見出し（リッチエディタ出力の h4 を h2 相当に） ---- */
+
+.post-full-content h4 {
+  font-size: 1.3rem;
+  margin: 34px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eaeaea;
+  color: #4a6da7;
+  line-height: 1.5;
+}
+
+/* 見出し内の <strong> は二重装飾になるので打ち消す */
+.post-full-content h4 strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+/* h5 が使われた場合は小見出し（h3相当） */
+.post-full-content h5 {
+  font-size: 1.12rem;
+  margin: 26px 0 12px;
+  color: #4a6da7;
+}
+
+.post-full-content h5 strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+/* ---- 2. 箇条書きの点・番号を復帰 ---- */
+
+.post-full-content ul {
+  list-style: disc;
+  list-style-position: outside;
+  margin: 0 0 20px 0;
+  padding-left: 1.6em;
+}
+
+.post-full-content ol {
+  list-style: decimal;
+  list-style-position: outside;
+  margin: 0 0 20px 0;
+  padding-left: 1.7em;
+}
+
+.post-full-content li {
+  margin-bottom: 10px;
+  padding-left: .15em;
+}
+
+.post-full-content li::marker {
+  color: #4a6da7;
+  font-weight: 700;
+}
+
+/* ---- 3. 章の区切り線 ---- */
+
+.post-full-content hr {
+  border: 0;
+  border-top: 1px solid #eaeaea;
+  margin: 34px 0;
+}
+
+/* 見出しの直前の hr は、見出し自身の罫線と重なるので余白だけにする */
+.post-full-content hr + h4 {
+  margin-top: 10px;
+}
+
+/* ---- 4. 引用・注意書き ---- */
+/* 既存の blockquote 指定（薄グレー・斜体）を、本文用に読みやすく上書き */
+
+.post-full-content blockquote {
+  background-color: #eef3fa;
+  border-left: 4px solid #4a6da7;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 26px 0;
+  font-style: normal;   /* 斜体を解除（日本語では読みにくいため） */
+  color: #33415c;
+}
+
+.post-full-content blockquote p {
+  margin-bottom: 0;
+}
+
+.post-full-content blockquote p + p {
+  margin-top: .6em;
+}
+
+/* 引用の冒頭が <strong> のものは「注意書き」として色を変える */
+.post-full-content blockquote > p > strong:first-child {
+  display: inline-block;
+  margin-bottom: .2em;
+  color: #b4532f;
+}
+
+/* ---- 5. 本文末の参考文献・免責（hr のあとの段落） ---- */
+
+.post-full-content hr + p em,
+.post-full-content hr + p {
+  font-size: .9rem;
+  line-height: 1.85;
+  color: #6b7680;
+}
+
+/* ---- 6. スマートフォン ---- */
+
+@media (max-width: 560px) {
+  .post-full-content {
+    padding: 20px;
+  }
+  .post-full-content h4 {
+    font-size: 1.18rem;
+    margin-top: 28px;
+  }
+  .post-full-content blockquote {
+    padding: 14px 16px;
+  }
+}
