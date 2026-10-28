@@ -19,6 +19,7 @@ const STATIC_PAGES = [
   { path: "/privacy-policy.html", priority: "0.3" },
   { path: "/sitemap.html", priority: "0.3" },
   { path: "/staff.html", priority: "0.7" },
+  { path: "/activities.html", priority: "0.6" },
   { path: "/telemedicine.html", priority: "0.8" },
   { path: "/vaccination.html", priority: "0.7" },
   { path: "/weight-management.html", priority: "0.7" },

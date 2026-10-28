@@ -8,11 +8,18 @@ const vm = require("vm");
 const { marked } = require("marked");
 
 async function fromMicroCMS(domain, key) {
-  const url = `https://${domain}.microcms.io/api/v1/news?limit=100&orders=-date`;
-  const res = await fetch(url, { headers: { "X-MICROCMS-API-KEY": key } });
-  if (!res.ok) throw new Error(`microCMS news API error: ${res.status}`);
-  const json = await res.json();
-  return json.contents
+  const contents = [];
+  let offset = 0;
+  while (true) {
+    const url = `https://${domain}.microcms.io/api/v1/news?limit=100&offset=${offset}&orders=-date`;
+    const res = await fetch(url, { headers: { "X-MICROCMS-API-KEY": key } });
+    if (!res.ok) throw new Error(`microCMS news API error: ${res.status}`);
+    const json = await res.json();
+    contents.push(...json.contents);
+    offset += json.contents.length;
+    if (!json.contents.length || offset >= (json.totalCount ?? offset)) break;
+  }
+  return contents
     .filter((item) => {
       if (!item.date || !item.title) {
         console.warn(`[data] news: 日付またはタイトルが未入力のためスキップ (id: ${item.id})`);
@@ -59,5 +66,14 @@ module.exports = async function () {
   threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
   let recent = items.filter((n) => new Date(n.dateISO) >= threeMonthsAgo);
   if (recent.length < 3) recent = items.slice(0, 3);
-  return { all: items, recent };
+  // 活動報告は「お知らせ」と同じ画面から更新する。古い報告も残すため全件から抽出。
+  const activityPrefix = /^\s*【活動報告】\s*/u;
+  const staffActivities = items
+    .filter((item) => activityPrefix.test(item.title))
+    .map((item) => ({
+      ...item,
+      title: item.title.replace(activityPrefix, "").trim(),
+    }))
+    .filter((item) => item.title);
+  return { all: items, recent, staffActivities };
 };

@@ -626,6 +626,68 @@ section { color: var(--text-color); background-color: var(--content-bg-color); m
   text-align: center;
 }
 
+.staff-team-description {
+  margin-top: 1.5em;
+  text-align: center;
+}
+
+.staff-section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.staff-section-actions .btn {
+  max-width: 100%;
+  min-height: 44px;
+  white-space: normal;
+}
+
+.staff-activity-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 4px;
+  color: #2c5282;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.staff-activity-link:focus-visible {
+  outline: 2px solid #2c5282;
+  outline-offset: 4px;
+}
+
+.staff-activities-intro {
+  max-width: 800px;
+  margin: 0 auto 3em;
+  padding: 24px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.staff-activities-intro h2 {
+  margin-bottom: 12px;
+  font-size: 1.3em;
+}
+
+.staff-activities-intro p {
+  color: var(--text-muted);
+}
+
+.staff-activities-intro .staff-activity-link {
+  margin-top: 8px;
+}
+
 .staff-item.doctor {
   grid-column: 1 / -1;
   display: grid;
