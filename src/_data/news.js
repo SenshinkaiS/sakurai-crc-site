@@ -6,6 +6,12 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 const { marked } = require("marked");
+const japanDate = new Intl.DateTimeFormat("sv-SE", {
+  timeZone: "Asia/Tokyo",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
 
 async function fromMicroCMS(domain, key) {
   const contents = [];
@@ -28,7 +34,7 @@ async function fromMicroCMS(domain, key) {
       return true;
     })
     .map((item) => ({
-      dateISO: item.date.slice(0, 10),
+      dateISO: japanDate.format(new Date(item.date)),
       title: item.title,
       bodyHtml: item.body || "",
     }));
