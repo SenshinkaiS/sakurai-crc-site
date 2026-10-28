@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>予防接種 - 医療法人千心会 櫻井医院</title>
 
-    <meta name="description" content="医療法人千心会 櫻井医院の予防接種についての情報です。インフルエンザ、肺炎球菌、帯状疱疹などの予防接種を実施しています。">
+    <meta name="description" content="櫻井医院の予防接種のご案内。2026年度の高崎市のインフルエンザ・新型コロナ・肺炎球菌・帯状疱疹の助成対象と自己負担、自費料金を掲載しています。予約制です。">
 
     <link rel="manifest" href="manifest.json">
 
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="stylesheet" href="css/main_styles.css">
+    <style>
+        .vaccine-section .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .vaccine-section .vaccine-table { min-width: 720px; }
+        .vaccine-section .vaccine-table thead th:first-child { width: 32%; }
+        .vaccine-section .vaccine-table tbody th { background: transparent; text-align: left; font-weight: 400; }
+        .vaccine-section .vaccine-card ul { list-style-type: disc; margin-left: 1.5rem; }
+        .vaccine-section .vaccine-card p + p, .vaccine-section .vaccine-card ul + p { margin-top: 12px; }
+        .vaccine-updated, .vaccine-source, .table-scroll-hint { font-size: 0.9rem; }
+        .table-scroll-hint { display: none; }
+        @media (max-width: 767px) { .table-scroll-hint { display: block; } }
+    </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,190 +106,214 @@
         <div class="container">
             <section class="vaccine-section">
                 <h3>予防接種について</h3>
-                <p>当院では、さまざまな感染症を予防するための各種予防接種を実施しています。予防接種は、お一人お一人の健康を守るだけでなく、社会全体の感染症の流行を防ぐために重要です。</p>
-                <p>接種を希望される方は、事前に予約をお願いいたします。また、体調の良い時に接種することが大切ですので、発熱等の症状がある場合は医師にご相談ください。</p>
+                <p>当院の予防接種は予約制です。ご希望のワクチンと接種歴を、お電話でお知らせください。持病や治療中のお薬、体調に合わせて接種をご案内します。</p>
+                <p>高崎市にお住まいの方は、年齢や接種歴などにより費用の助成を受けられます。対象者の自己負担額と、助成を利用しない場合の自費料金を分けて掲載しています。</p>
+                <p class="vaccine-updated">高崎市の助成制度：2026年10月29日確認（令和8年度）</p>
             </section>
 
-            <section class="vaccine-section">
-                <h3>取り扱いワクチン</h3>
-                <p>当院では以下のワクチンを取り扱っています。</p>
-
-                <div class="table-responsive">
+            <section class="vaccine-section" id="vaccine-fees">
+                <h3>取り扱いワクチンと費用</h3>
+                <p>高崎市の助成を利用できる方の条件は、下の各ワクチンの案内をご確認ください。金額は税込です。</p>
+                <p class="table-scroll-hint">表は横にスクロールできます。</p>
+                <div class="table-responsive" role="region" aria-label="ワクチンの自費料金と高崎市助成対象者の自己負担額" tabindex="0">
                     <table class="vaccine-table">
                         <thead>
                             <tr>
-                                <th>種類</th>
-                             <!--   <th>対象者</th>  -->
-                                <th>接種回数</th>
-                                <th>料金（税込）</th>
-                             <!--   <th>備考</th>  -->
+                                <th scope="col">種類</th>
+                                <th scope="col">接種回数</th>
+                                <th scope="col">自費料金</th>
+                                <th scope="col">高崎市の助成対象者の自己負担</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>インフルエンザワクチン</td>
-                            <!--    <td>全年齢</td>  -->
-                                <td>年1回</td>
-                                <!-- ▼ 今シーズンの料金・助成額が決まったらここを更新 -->
-                                <td>今シーズン（令和8年度）の料金・助成額は未定です。<br>決まり次第掲載いたします。</td>
-                            <!--    <td>10月〜1月頃に接種</td>  -->
+                                <th scope="row">インフルエンザ</th>
+                                <td>定期接種：期間内1回</td>
+                                <td>お問い合わせください</td>
+                                <td>定期接種：<strong>1,500円</strong></td>
                             </tr>
                             <tr>
-                                <td>新型コロナワクチン</td>
-                            <!--    <td>全年齢</td>  -->
-                                <td>年1回</td>
-                                <!-- ▼ 今シーズンの料金・助成額が決まったらここを更新 -->
-                                <td>今シーズン（令和8年度）の料金・助成額は未定です。<br>決まり次第掲載いたします。</td>
-                            <!--    <td>ファイザー</td>  -->
+                                <th scope="row">新型コロナ</th>
+                                <td>定期接種：期間内1回</td>
+                                <td>お問い合わせください</td>
+                                <td>定期接種：<strong>5,000円</strong></td>
                             </tr>
                             <tr>
-                                <td>肺炎球菌ワクチン（ニューモバックス）</td>
-                            <!--    <td>65歳以上の方</td>  -->
-                                <td>1回</td>
-                                <td>8,000円<br>高崎市助成額2,000円</td>
-                            <!--    <td>公費助成制度あり</td>  -->
+                                <th scope="row">肺炎球菌<br>ニューモバックス（23価）</th>
+                                <td>接種歴に応じて相談</td>
+                                <td>8,000円</td>
+                                <td>任意接種：6,000円</td>
                             </tr>
                             <tr>
-                                <td>肺炎球菌ワクチン（プレベナー20）</td>
-                            <!--    <td>感染リスクの高い65歳以上の方</td>  -->
+                                <th scope="row">肺炎球菌<br>プレベナー20（20価）</th>
                                 <td>1回</td>
                                 <td>11,000円</td>
-                            <!--    <td>より広い型をカバー。予防効果が長期間持続</td>  -->
+                                <td>定期接種：<strong>2,000円</strong><br>任意接種：9,000円</td>
                             </tr>
                             <tr>
-                                <td>帯状疱疹ワクチン（生ワクチン）</td>
-                            <!--    <td>50歳以上の方<br>高リスクの18才以上の方</td>  -->
-                                <td>1回</td>
-                                <td>8,500円<br>定期接種助成:4,500円、任意接種助成:4,000円</td>
-                            <!--    <td>水痘・帯状疱疹ウイルスの再活性化を予防</td>  -->
-                            </tr>
-                            <tr>
-                                <td>帯状疱疹ワクチン（不活化ワクチン）</td>
-                            <!--    <td>50歳以上の方<br>高リスクの18才以上の方</td>  -->
-                                <td>2回</td>
-                                <td>22,000円/回<br>助成額 1回に10,000円</td>
-                            <!--    <td>予防効果が長期間持続。2回接種（2ヶ月間隔）</td>  -->
-                            </tr>
-                            <tr>
-                                <td>破傷風ワクチン</td>
-                            <!--    <td>全年齢</td>  -->
-                                <td>1回（追加接種）</td>
-                                <td>4,000円</td>
-                            <!--    <td>傷の処置時など必要に応じて</td>  -->
-                            </tr>
-                            <tr>
-                                <td>B型肝炎ワクチン</td>
-                            <!--    <td>全年齢</td>  -->
-                                <td>3回</td>
-                                <td>7,000円/回</td>
-                            <!--    <td>0, 1, 6ヶ月後に接種</td>  -->
-                            </tr>
-                            <tr>
-                                <td>麻しん風しん混合（MR）ワクチン</td>
-                            <!--    <td>医師と相談</td>  -->
-                                <td>1回</td>
-                                <td>12,000円</td>
-                            <!--    <td>抗体検査後に必要に応じて</td>  -->
-                            </tr>
-                            <tr>
-                                <td>水痘ワクチン</td>
-                            <!--    <td>医師と相談</td>  -->
+                                <th scope="row">帯状疱疹<br>生ワクチン</th>
                                 <td>1回</td>
                                 <td>8,500円</td>
-                            <!--    <td>抗体検査後に必要に応じて</td>  -->
+                                <td>定期接種：<strong>4,000円</strong><br>任意接種：4,500円</td>
                             </tr>
                             <tr>
-                                <td>おたふくかぜワクチン</td>
-                            <!--    <td>医師と相談</td>  -->
+                                <th scope="row">帯状疱疹<br>不活化ワクチン（シングリックス）</th>
+                                <td>2回</td>
+                                <td>22,000円／回</td>
+                                <td>定期・任意接種とも<br><strong>12,000円／回</strong></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">破傷風</th>
+                                <td>1回（追加接種）</td>
+                                <td>4,000円</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">B型肝炎</th>
+                                <td>3回</td>
+                                <td>7,000円／回</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">麻しん風しん混合（MR）</th>
+                                <td>1回</td>
+                                <td>12,000円</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">水痘</th>
+                                <td>1回</td>
+                                <td>8,500円</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">おたふくかぜ</th>
                                 <td>1回</td>
                                 <td>7,500円</td>
-                            <!--    <td>抗体検査後に必要に応じて</td>  -->
+                                <td>—</td>
                             </tr>
                             <tr>
-                                <td>RSウイルスワクチン</td>
-                            <!--    <td>60歳以上<br>慢性呼吸器疾患等の基礎疾患を有する方</td>  -->
+                                <th scope="row">RSウイルス</th>
                                 <td>1回</td>
                                 <td>27,000円</td>
-                            <!--    <td>呼吸器感染症の予防</td>  -->
+                                <td>—</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
+                <p>任意接種の自己負担は、当院の自費料金から高崎市の助成額を差し引いた金額です。帯状疱疹の不活化ワクチンは2回接種し、表の料金は1回当たりです。助成の欄は、このページで詳しく案内する高崎市の4種類の制度について掲載しています。その他の公費接種については受付にご相談ください。</p>
                 <div class="note-box">
-                    <h4>ご注意</h4>
-                    <p>帯状疱疹ワクチンは、高崎市による助成（50歳以上の方）に加え、国の定期接種（対象年齢の方）の対象となりました。助成額は上記のとおりです（従来と同額）。</p>
-                    <p>ワクチンの在庫状況や接種条件は変更される場合があります。最新の情報は当院までお問い合わせください。</p>
-                    <p>予防接種は予約制となっておりますので、事前にお電話でご予約をお願いいたします。</p>
+                    <h4>助成を利用する方へ</h4>
+                    <p>各定期接種の対象者で、生活保護や中国残留邦人等への支援給付を受けている方は、自己負担が無料になります。ご予約時にお申し出ください。</p>
+                    <p>助成の対象は、住所・年齢・過去の接種や助成の利用状況などで異なります。高崎市以外にお住まいの方は、お住まいの市町村にご確認ください。</p>
+                    <p>接種できる日とワクチンの在庫は、お電話でご確認ください。</p>
                 </div>
             </section>
 
-            <section class="vaccine-section">
-                <h3>季節性インフルエンザワクチン</h3>
-                <p>インフルエンザワクチンは、毎年10月頃から接種を開始しています。ワクチンの効果は接種後2週間程度で出現し、約5ヶ月間持続するとされています。</p>
-
+            <section class="vaccine-section" id="influenza">
+                <h3>インフルエンザワクチン</h3>
+                <p>高齢の方や、心臓・呼吸器などに持病のある方は、重症化を防ぐため接種をご検討ください。ワクチンの効果が出るまでには、接種後約2週間かかります。</p>
                 <div class="vaccine-cards">
                     <div class="vaccine-card">
-                        <h4>接種をお勧めする方</h4>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
-                            <li>65歳以上の高齢者</li>
-                            <li>心臓病、呼吸器疾患などの基礎疾患をお持ちの方</li>
-                            <li>医療従事者や介護従事者</li>
-                            <li>妊婦の方</li>
-                            <li>乳幼児の保護者</li>
-                            <li>学校や職場などで集団生活をされる方</li>
+                        <h4>高崎市の定期接種</h4>
+                        <ul>
+                            <li>対象：接種当日に<strong>65歳以上</strong>の高崎市民</li>
+                            <li>60〜64歳で、心臓・腎臓・呼吸器の機能やHIVによる免疫機能に重い障害（身体障害者手帳1級相当）がある方も対象です。</li>
+                            <li>自己負担：<strong>1,500円</strong>（期間内に1人1回）</li>
+                            <li>高崎市内の助成期間：<strong>2026年9月24日〜12月31日</strong></li>
                         </ul>
+                        <p>市内の助成開始日は例年より前倒しされています。当院で接種できる日は、ご予約時にご確認ください。</p>
                     </div>
-
                     <div class="vaccine-card">
-                        <h4>接種時の注意点</h4>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
-                            <li>発熱している場合は接種できません</li>
-                            <li>接種後は15〜30分程度、院内で安静にしてください</li>
-                            <li>接種当日の激しい運動は避けてください</li>
-                            <li>接種当日の入浴は問題ありませんが、長時間の入浴や飲酒は控えてください</li>
+                        <h4>お持ちいただくもの</h4>
+                        <ul>
+                            <li>マイナンバーカード、または資格確認書</li>
+                            <li>健康づくり受診券のインフルエンザ券（シール）</li>
+                            <li>対象となる60〜64歳の方は、身体障害者手帳など障害の程度が分かるもの</li>
                         </ul>
+                        <p>2026年4月1日以降に65歳になった方は、シールがなくても年齢などを確認できれば助成を受けられます。</p>
                     </div>
                 </div>
+                <p class="vaccine-source"><a href="https://www.city.takasaki.gunma.jp/page/3562.html" target="_blank" rel="noopener noreferrer">高崎市：インフルエンザ予防接種の詳しい案内</a></p>
             </section>
 
-            <section class="vaccine-section">
+            <section class="vaccine-section" id="covid">
+                <h3>新型コロナワクチン</h3>
+                <div class="vaccine-cards">
+                    <div class="vaccine-card">
+                        <h4>高崎市の定期接種</h4>
+                        <ul>
+                            <li>対象：接種当日に<strong>65歳以上</strong>の高崎市民</li>
+                            <li>60〜64歳で、心臓・腎臓・呼吸器の機能やHIVによる免疫機能に重い障害（身体障害者手帳1級相当）がある方も対象です。</li>
+                            <li>自己負担：<strong>5,000円</strong>（期間内に1人1回）</li>
+                            <li>助成期間：<strong>2026年10月1日〜12月31日</strong></li>
+                        </ul>
+                    </div>
+                    <div class="vaccine-card">
+                        <h4>お持ちいただくもの</h4>
+                        <ul>
+                            <li>マイナンバーカード、または資格確認書</li>
+                            <li>健康づくり受診券の新型コロナワクチン券（シール）</li>
+                            <li>対象となる60〜64歳の方は、身体障害者手帳など障害の程度が分かるもの</li>
+                        </ul>
+                        <p>2026年4月1日以降に65歳になった方や、受診券の再発行・転入などでシールがない方も、対象であることを確認できれば助成を受けられます。</p>
+                    </div>
+                </div>
+                <p>医師が認めた場合は、インフルエンザワクチンと同時に、または間隔をあけずに接種できます。ご希望の方は予約時にご相談ください。</p>
+                <p class="vaccine-source"><a href="https://www.city.takasaki.gunma.jp/page/10019969.html" target="_blank" rel="noopener noreferrer">高崎市：新型コロナワクチンの詳しい案内</a></p>
+            </section>
+
+            <section class="vaccine-section" id="pneumococcal">
                 <h3>肺炎球菌ワクチン</h3>
-                <p>肺炎球菌ワクチンは、肺炎球菌による肺炎や髄膜炎などの重篤な感染症を予防するためのワクチンです。特に65歳以上の高齢者や慢性疾患をお持ちの方には接種をお勧めしています。</p>
-
+                <p>肺炎球菌による肺炎などの重い感染症を防ぐためのワクチンです。接種歴や持病により、適したワクチンと接種時期が異なります。過去に接種した方も、ご予約時にお知らせください。</p>
                 <div class="vaccine-cards">
                     <div class="vaccine-card">
-                        <h4>対象者</h4>
-                        <p>65歳以上の方を中心に接種をお勧めしています。ニューモバックスは5年に1回接種することが出来ます。特に以下の方は重症化リスクが高いため、プレベナー20の積極的な接種をお勧めします。</p>
-                        <ul style="list-style-type: disc; margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li>心臓病、呼吸器疾患などの基礎疾患をお持ちの方</li>
-                            <li>糖尿病の方</li>
-                            <li>免疫機能が低下している方</li>
+                        <h4>高崎市の定期接種</h4>
+                        <ul>
+                            <li>対象：<strong>65歳の高崎市民</strong>（66歳の誕生日の前日まで）</li>
+                            <li>60〜64歳で、心臓・腎臓・呼吸器の機能やHIVによる免疫機能に身体障害者手帳1級相当の障害がある方も対象です。</li>
+                            <li>使用するワクチン：<strong>プレベナー20（20価）</strong></li>
+                            <li>自己負担：<strong>2,000円</strong>（1回接種）</li>
                         </ul>
+                        <p>マイナ保険証または資格確認書、市から届いた予防接種番号用紙（通知文）をお持ちください。接種歴により対象外となる場合があります。</p>
                     </div>
-
                     <div class="vaccine-card">
-                        <h4>公費助成制度</h4>
-                        <p>ニューモバックスについては、65歳の方のみが公費助成の対象です。過去にニューモバックスの接種をしたことがある人は、公費助成の対象になりません。60〜65歳の心臓・腎臓・呼吸器・免疫の機能で身体障害者手帳1級程度の方は対象になる可能性がありますので、お問い合わせください。</p>
+                        <h4>66歳以上の方への任意接種の助成</h4>
+                        <p>接種当日に<strong>66歳以上</strong>で、これまで高崎市や国の制度による助成等を一度も受けていない高崎市民が対象です。市内の実施医療機関で受ける接種に、<strong>2,000円の助成</strong>があります。</p>
+                        <p>当院での助成後の自己負担は、ニューモバックス6,000円、プレベナー20は9,000円です。マイナ保険証または資格確認書をお持ちください。</p>
+                        <p>過去に自費で接種した方も、ワクチンの種類・接種日・助成の利用歴をご予約時にお伝えください。</p>
                     </div>
                 </div>
+                <p class="vaccine-source"><a href="https://www.city.takasaki.gunma.jp/page/3566.html" target="_blank" rel="noopener noreferrer">高崎市：肺炎球菌ワクチンの詳しい案内</a></p>
             </section>
 
-            <section class="vaccine-section">
+            <section class="vaccine-section" id="shingles">
                 <h3>帯状疱疹ワクチン</h3>
-                <p>帯状疱疹は、過去に水痘（水ぼうそう）に感染した際に体内に潜伏したウイルスが再活性化することで発症します。50歳以上の方は帯状疱疹のリスクが高まるため、予防接種をお勧めしています。高崎市では50才以上の方は、公費助成が受けられます。65歳以上の方は、定期接種として国の公費助成の対象になりました。<a href="https://youtu.be/xWW2drF_X1E?si=l4-siKJTsY-5ZQRF">詳しくはこちら(Youtube)</a></p>
-
+                <p>帯状疱疹は、体の片側に痛みを伴う発疹や水疱が現れ、皮膚が治った後も神経痛が残ることがある病気です。ワクチンには、生ワクチン（1回接種）と、不活化ワクチンのシングリックス（2回接種）があります。</p>
                 <div class="vaccine-cards">
                     <div class="vaccine-card">
-                        <h4>帯状疱疹の症状</h4>
-                        <p>片側の体の一部に、痛みを伴う発疹や水疱が帯状に現れます。痛みは激しく、発疹が治った後も神経痛（帯状疱疹後神経痛）が長期間続くことがあります。</p>
+                        <h4>2026年度（令和8年度）の定期接種</h4>
+                        <p>2026年4月1日〜2027年3月31日の間に、<strong>65・70・75・80・85・90・95・100歳になる高崎市民</strong>が対象です。<strong>65歳以上の方全員が対象ではありません。</strong></p>
+                        <p>接種当日に60〜64歳で、HIVによる所定の免疫機能障害がある方も対象です。</p>
+                        <ul>
+                            <li>生ワクチン：自己負担<strong>4,000円</strong>（1回）</li>
+                            <li>シングリックス：自己負担<strong>12,000円／回</strong>（2回）</li>
+                        </ul>
+                        <p>年度内の接種となるため、2回接種をご希望の方は、接種間隔も考慮して早めにご相談ください。過去に市の助成で接種を完了した方などは、助成対象外となります。</p>
                     </div>
-
                     <div class="vaccine-card">
-                        <h4>ワクチンの種類</h4>
-                        <p>現在、日本では「生ワクチン」と「不活化ワクチン」の2種類が使用可能です。それぞれ特徴が異なりますので、どちらが適しているかは医師にご相談ください。</p>
+                        <h4>定期接種の対象でない方への任意接種の助成</h4>
+                        <p>接種当日に<strong>50歳以上</strong>の高崎市民、または病気や治療で免疫が低下している方など、<strong>医師が接種を必要と認める18歳以上</strong>の高崎市民が対象です。18歳以上の高リスクの方は、シングリックスのみ対象となります。</p>
+                        <p>助成は、市内の実施医療機関での接種について、1人1セット・どちらか一方のワクチンに限ります。定期接種の対象者は、定期接種として受けます。</p>
+                        <ul>
+                            <li>生ワクチン：助成上限4,000円<br>当院での自己負担<strong>4,500円</strong></li>
+                            <li>シングリックス：助成上限10,000円／回<br>当院での自己負担<strong>12,000円／回</strong>（2回）</li>
+                        </ul>
+                        <p>過去に助成を受けて接種を完了した方は対象外です。助成の利用状況をご予約時にお伝えください。予診票は当院に備えています。</p>
                     </div>
                 </div>
+                <p>シングリックスは、通常2か月以上の間隔をあけて2回接種します。高崎市の任意接種の助成を利用する場合、2回目は1回目の2〜6か月後に接種します。病気や治療により免疫が低下している方には、生ワクチンは接種できません。ワクチンの選択や接種時期は医師にご相談ください。</p>
+                <p class="vaccine-source"><a href="https://www.city.takasaki.gunma.jp/page/10019967.html" target="_blank" rel="noopener noreferrer">高崎市：帯状疱疹ワクチンの詳しい案内</a></p>
             </section>
 
             <section class="vaccine-section">
@@ -286,40 +321,37 @@
                 <div class="qa-list">
                     <div class="qa-item">
                         <p class="qa-question">予防接種の予約はどのようにしたらよいですか？</p>
-                        <p class="qa-answer">お電話（027-352-1270）にてご予約をお願いいたします。接種するワクチンの種類、お名前、生年月日、連絡先をお伝えください。</p>
+                        <p class="qa-answer">お電話（<a href="tel:027-352-1270">027-352-1270</a>）でご予約ください。ワクチンの種類、お名前、生年月日、連絡先に加え、過去の接種や助成の利用状況をお伝えください。</p>
                     </div>
-
                     <div class="qa-item">
-                        <p class="qa-question">予防接種当日は何を持っていけばよいですか？</p>
-                        <p class="qa-answer">マイナ保険証、予防接種手帳（お持ちの方）、公費助成を受ける場合は接種券をお持ちください。</p>
+                        <p class="qa-question">当日は何を持っていけばよいですか？</p>
+                        <p class="qa-answer">マイナ保険証または資格確認書と、接種歴が分かるものをお持ちください。助成を利用する方は、市からの接種券・通知文、対象となる障害の程度が分かるものなどもご用意ください。必要な書類はワクチンや対象区分によって異なりますので、ご予約時にご確認ください。</p>
                     </div>
-
                     <div class="qa-item">
-                        <p class="qa-question">複数のワクチンを同時に接種することはできますか？</p>
-                        <p class="qa-answer">ワクチンの種類によっては、同時接種が可能なものと、一定の間隔をあける必要があるものがあります。詳しくは医師にご相談ください。</p>
+                        <p class="qa-question">接種券のシールがなくても、インフルエンザや新型コロナの助成を受けられますか？</p>
+                        <p class="qa-answer">2026年4月1日以降に65歳になった方などは、シールがなくても対象であることを確認できれば助成を受けられます。ご予約時にお申し出ください。</p>
                     </div>
-
                     <div class="qa-item">
-                        <p class="qa-question">予防接種後の副反応にはどのようなものがありますか？</p>
-                        <p class="qa-answer">接種部位の痛みや腫れ、発赤などの局所反応や、発熱、倦怠感などの全身反応が見られることがあります。通常は数日で自然に治まります。</p>
+                        <p class="qa-question">複数のワクチンを同時に接種できますか？</p>
+                        <p class="qa-answer">インフルエンザと新型コロナは、医師が認めた場合に同時接種できます。他の組み合わせも含め、ワクチンの種類や体調に応じて判断しますので、ご予約時にご相談ください。</p>
+                    </div>
+                    <div class="qa-item">
+                        <p class="qa-question">接種当日の注意点を教えてください。</p>
+                        <p class="qa-answer">発熱や体調不良がある場合は、接種前にご相談ください。接種後は15〜30分程度、院内でお休みいただきます。当日は激しい運動や長時間の入浴、飲酒を控えてください。</p>
+                    </div>
+                    <div class="qa-item">
+                        <p class="qa-question">接種後の副反応にはどのようなものがありますか？</p>
+                        <p class="qa-answer">接種した部位の痛み・腫れ・赤みや、発熱・だるさなどがみられることがあります。気になる症状がある場合はご相談ください。</p>
                     </div>
                 </div>
             </section>
 
             <section class="vaccine-section">
                 <h3>予防接種のご予約・お問い合わせ</h3>
-                <p>予防接種は予約制となっております。お電話にてご予約をお願いいたします。</p>
-                <p>ワクチンの在庫状況や最新の情報については、お電話でお問い合わせください。</p>
-
+                <p>予防接種は予約制です。ワクチンの在庫と接種できる日を、お電話でご確認ください。</p>
                 <ul class="info-list">
-                    <li>
-                        <span class="info-label">電話番号</span>
-                        <span><a href="tel:027-352-1270">027-352-1270</a></span>
-                    </li>
-                    <li>
-                        <span class="info-label">予約受付時間</span>
-                        <span>診療時間内（平日9:00-12:00 / 14:00-18:00、木曜土曜9:00-13:00）</span>
-                    </li>
+                    <li><span class="info-label">電話番号</span><span><a href="tel:027-352-1270">027-352-1270</a></span></li>
+                    <li><span class="info-label">予約受付時間</span><span>診療時間内（平日9:00-12:00 / 14:00-18:00、木曜土曜9:00-13:00）</span></li>
                 </ul>
             </section>
         </div>
