@@ -23,6 +23,9 @@
 .activity-body ol { padding-left: 1.5em; }
 .activity-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
 .activity-body a, .activities-footer-link a { color: #415e88; text-decoration: underline; text-underline-offset: .2em; }
+.activity-artwork { max-width: 640px; margin: 24px 0 0; }
+.activity-artwork img { display: block; width: 100%; height: auto; }
+.activity-artwork figcaption { margin-top: 12px; color: var(--text-muted); font-size: .85rem; }
 .activities-footer-link { margin-top: 28px; }
 .activities-footer-link a { display: inline-flex; align-items: center; min-height: 44px; }
 .activities-page a:focus-visible { outline: 3px solid #415e88; outline-offset: 4px; }

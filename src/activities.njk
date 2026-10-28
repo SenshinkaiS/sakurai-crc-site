@@ -12,7 +12,7 @@ permalink: "activities.html"
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="stylesheet" href="css/main_styles.css?v=20261029">
-    <link rel="stylesheet" href="css/activities.css?v=20261029">
+    <link rel="stylesheet" href="css/activities.css?v=20261029-2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
@@ -108,7 +108,7 @@ permalink: "activities.html"
                             <div class="activity-body">{{ activity.bodyHtml | safe }}</div>
                         </div>
                     </article>
-{%- else %}
+{%- endfor %}
                     <article class="activity-entry">
                         <div class="activity-meta">
                             <span class="activity-category">院内の展示</span>
@@ -118,12 +118,15 @@ permalink: "activities.html"
                             <h3>院長の作品「夏の雲」を院内に展示しています</h3>
                             <p class="activity-person">院長　櫻井 繁樹</p>
                             <div class="activity-body">
-                                <p>高崎市医師会作品展に出展した、院長のメディアミックス作品「夏の雲」を院内に展示しています。</p>
-                                <p>ご来院の際に、よろしければご覧ください。</p>
+                                <p>2026年10月15日〜19日に高崎高島屋で開催された高崎市医師会作品展に、院長のメディアミックス作品「夏の雲」を出展しました。</p>
+                                <p>現在は院内に展示しています。ご来院の際に、よろしければご覧ください。</p>
+                                <figure class="activity-artwork">
+                                    <img src="images/natsunokumo.png" alt="院長の作品「夏の雲」。青空に大きな白い雲と山の稜線が広がる。" width="833" height="744" loading="lazy" decoding="async">
+                                    <figcaption>「夏の雲」／櫻井 繁樹</figcaption>
+                                </figure>
                             </div>
                         </div>
                     </article>
-{%- endfor %}
                 </div>
                 <div class="activities-footer-link">
                     <a href="staff.html">院長挨拶・スタッフ紹介へ</a>
